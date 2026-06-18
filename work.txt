@@ -1,0 +1,8 @@
+
+
+
+cargo build --release
+
+cargo install --path .
+
+asura check --nginx  // This command will working on overall syatem - 

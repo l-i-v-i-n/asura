@@ -1,0 +1,41 @@
+use bollard::Docker;
+use bollard::container::{ListContainersOptions, StopContainerOptions, StartContainerOptions};
+use std::default::Default;
+
+#[tokio::main]
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    // Connect to the default Unix socket (no binary execution!)
+    let docker = Docker::connect_with_unix_defaults()?;
+
+    // 1. LIST all running containers
+    let containers = docker
+        .list_containers::<String>(Some(ListContainersOptions {
+            all: true, // show running + stopped
+            ..Default::default()
+        }))
+        .await?;
+
+    for container in &containers {
+        println!(
+            "ID: {:?}, Names: {:?}, State: {:?}",
+            container.id, container.names, container.state
+        );
+    }
+
+    // 2. START a container (e.g., "my-nginx")
+    if let Some(first) = containers.first() {
+        let id = first.id.as_ref().unwrap();
+        
+        // Start it
+        docker.start_container::<String>(id, None).await?;
+        println!("Started container {}", id);
+
+        // Stop it with a 10-second timeout
+        docker
+            .stop_container(id, Some(StopContainerOptions { t: 10 }))
+            .await?;
+        println!("Stopped container {}", id);
+    }
+
+    Ok(())
+}

@@ -1,0 +1,71 @@
+
+
+
+🧠 ASURA FULL COMMAND SYSTEM (DESIGN)
+
+
+🔥 Core CLI;
+asura start
+asura stop
+asura status
+asura help
+
+
+🧰 SYSTEM COMMANDS;
+asura system info
+asura system health
+asura system logs
+
+
+
+🌐 SERVICE MANAGEMENT (like systemctl / docker);
+asura service list
+asura service start nginx
+asura service stop nginx
+asura service restart nginx
+asura service status nginx
+
+
+
+🧪 CHECK COMMANDS (your current idea);
+asura check nginx
+asura check docker
+asura check git
+asura check node
+
+
+🚀 DEPLOY (your .iil system);
+asura deploy app.iil
+asura deploy nginx.iil
+asura deploy --dry-run app.iil
+
+
+📦 APP CONTROL;
+asura app list
+asura app run nginx
+asura app stop nginx
+asura app logs nginx
+
+
+📊 MONITORING (like kubectl top);
+asura top
+asura ps
+asura watch
+
+
+🔌 NETWORK / PORT CONTROL;
+asura net ports
+asura net check 6666
+asura net reserve 6666
+
+
+⚙️ DAEMON CONTROL (IMPORTANT);
+asura daemon start
+asura daemon stop
+asura daemon status
+
+
+🧠 HELP SYSTEM (kubectl-style);
+asura help
+asura help service
+asura help deploy

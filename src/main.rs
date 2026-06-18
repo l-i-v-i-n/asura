@@ -1,3 +1,5 @@
+mod urls;
+
 fn main() {
-    println!("Asura");
+    urls::run();
 }
